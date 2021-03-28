@@ -1,36 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>login Page</title>
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
-</head>
-<body>
-	<div class="container vh-100">
-		<div class="row justify-content-center h-100">
-			<div class="card w-25 my-auto shadow">
-				<div class="card-header text-center bg-primary text-white">
-					<h2>Login form</h2>
-				</div>
-				<div class="card-body">
-					<form action="" method="">
-						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" id="email" class="form-control" name="" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" id="password" class="form-control" name="" />
-						</div>
-						<input type="submit" class="btn btn-primary w-100" value="Login" name="">
-					</form>
-				</div>
-				<div class="card-footer text-right">
-					<small>&copy; Technical Babaji</small>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+@extends('layouts.app')
 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

@@ -1,0 +1,7 @@
+DELIMITER //
+     CREATE TRIGGER logPembayaran
+     AFTER INSERT ON pembayaran
+     FOR EACH ROW
+     BEGIN
+     INSERT INTO `activity_log` (`id`, `nama_log`, `deskripsi`, `tabel`, `referensi_id`, `user_id`, `created_at`, `updated_at`) VALUES (NULL, 'Pembayaran masuk', 'data pembayaran masuk', 'pembayaran', '', '', now(), NULL);
+END //

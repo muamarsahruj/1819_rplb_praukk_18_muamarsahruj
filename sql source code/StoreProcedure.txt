@@ -1,0 +1,10 @@
+DELIMITER //
+	CREATE PROCEDURE update_status_pembayaran(
+        pembayaran_id int(11),
+        newStatus enum('Belum Lunas', 'Lunas')
+        )
+        BEGIN
+        UPDATE pembayaran
+        SET status = newStatus
+        WHERE id = pembayaran_id;
+END //
