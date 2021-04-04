@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Riwayat extends Model
 {
     protected $table        = 'v_riwayat_pembayaran';
+    protected $fillable     = ['nama_pelanggan', 'pelanggan_id', 'jumlah_meter', 'tgl_pembayaran', 'metode_id'];
 
     public function metode()
     {
@@ -18,4 +19,3 @@ class Riwayat extends Model
         return $this->hasOne('App\Models\Tagihan');
     }
 }
-

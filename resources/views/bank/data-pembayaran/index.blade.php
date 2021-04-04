@@ -1,5 +1,5 @@
 @extends('bank.layouts.app')
-  
+
 @section('title','Data Pembayaran | E-Electricity')
 
 @section('content')
@@ -11,10 +11,10 @@
   @endif --}}
   <div class="row">
     <div class="col-lg-12">
-      <h3><span>Data pembayaran</span></h3>
+      <h3><span><b>Data pembayaran</b></span></h3>
       <div class="card card-body">
         {{-- <div class="mb-3">
-          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
+          <button type="button" class="btn btn-primary float-right"><a href="/tagihan" class="text-white"> Tambah Data</a></button>
         </div> --}}
         <div class="table-responsive">
           <table class="table table-bordered mt-5 text-center" id="dataTables" width="100%">
@@ -39,8 +39,17 @@
                     <td scope="row">{{ $pembayaran->tgl_pembayaran }}</td>
                     <td scope="row">Rp. {{ number_format($pembayaran->total_bayar) }}</td>
                     <td scope="row">{{ $pembayaran->metode->nama_metode }}</td>
-                    <td scope="row">{{ $pembayaran->status }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('verifikasi', $pembayaran->id) }}" role="button">Verifikasi</a></td>
+                    <td>
+                        @if ($pembayaran->status == "sedang diproses")
+                        <span class="badge badge-primary">Sedang Diproses</span>
+                      @else
+                        <span class="badge badge-success">Lunas</span>
+                      @endif
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ route('verifikasi', $pembayaran->id) }}" role="button">Verifikasi</a>
+                        <a href="{{ route('pembayaran.delete', $pembayaran->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash text-white"></i></a>
+                    </td>
                 </tr>
                 @endforeach
               </tbody>
@@ -61,7 +70,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-            
+
       <form action="{{ route('tarif.store') }}" method="post">
         {{ csrf_field() }}
         <div class="modal-body">
@@ -74,8 +83,8 @@
               <label for="recipient-name" class="col-form-label">Tarif perkWh</label>
               <input type="number" class="form-control" id="recipient-name" name="tarif_perkwh" placeholder="Enter tarif" required>
             </div>
-                  
-                  
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

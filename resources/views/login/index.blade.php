@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body style="background-color: #3259C7">
-    
-    
+
+
     <div class="container">
         <div class="row justify-content-center my-auto">
             <div class="col-lg-10 col-md-9 col-xl-10 my-5">
@@ -26,7 +26,7 @@
 
                                 <div class="form-group">
                                     <label for="username" class="text-dark" style="position: relative; left: 70px;">Username</label>
-                                    <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username..." 
+                                    <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username..."
                                     aria-describedby="helpId" style="width: 350px; height: 45px; background-color: #E8E8E8; border-radius: 10px; position: relative; left: 70px;">
 
                                     @error('username')
@@ -52,7 +52,7 @@
                                     <a href="/register" class="font-weight-bold text-dark">Belum Punya Akun ?</a>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

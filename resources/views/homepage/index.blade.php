@@ -7,13 +7,14 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">E-Electricity</a>
+    <img src="{{asset('img/logo.png')}}" alt="" width="70">
+    <a class="navbar-brand" href="/">E-Electricity</a>
     <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <!-- <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">category</a> -->
         <!-- <a class="nav-link" href="#">Menu</a>  -->
         <a class="nav-link" href="/register">Registrasi</a>
@@ -47,9 +48,9 @@
         <div class="col-lg-5">
           <div data-aos="fade-up"
           data-aos-duration="3000">
-          <h3>You <span>Work</span> Like At <span>Home</span> </h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, optio?</p>
-     </div>
+          <h3>Perusahaan <span>Listrik</span> Negera</h3>
+          <p>PT PLN (Persero) adalah sebuah BUMN yang mengurusi semua aspek kelistrikan yang ada di Indonesia.</p>
+        </div>
         </div>
     </div>
     {{-- end working space --}}
@@ -59,8 +60,8 @@
         <div class="col-lg-6">
           <div data-aos="fade-up"
           data-aos-duration="3000">
-          <h3>You <span>Work</span> Like At <span>Home</span> </h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, optio?</p>
+          <h3><span>Listrik</span></h3>
+          <p>listrik adalah rangkaian fenomena fisika yang berhubungan dengan kehadiran dan aliran muatan listrik. Listrik menimbulkan berbagai macam efek yang telah umum diketahui, seperti petir, listrik statis, induksi elektromagnetik dan arus listrik.</p>
      </div>
         </div>
         <div class="col-lg-5">

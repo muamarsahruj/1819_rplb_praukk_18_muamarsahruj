@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -13,31 +12,7 @@ class RiwayatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $data_riwayat = \App\Models\Riwayat::all();
-        $v_riwayatpembayaran = \App\Models\Riwayat::all();
-        $metode = \App\Models\Metode::all();
-        if (Gate::allows('admin')){
-            return view('admin.riwayat-pembayaran.index', compact('data_riwayat', 'v_riwayatpembayaran', 'metode'));
-        } else { 
-            return abort(404);
-        }
-    }
-    
-    public function riwayat()
-    {
-        $data = \App\Models\Pembayaran::all();
-        return view('pelanggan.riwayat-pembayaran.index', compact('data'));
-    }
 
-    public function riwayatPdf()
-    {
-        $data = \App\Models\Pembayaran::all();
-        $pdf = PDF::loadView('pelanggan.riwayat-pembayaran.pdf', compact('data'))->setPaper('a4', 'potrait');
-        return $pdf->stream();
-    }
-    
     public function riwayatpembayaran()
     {
         $metode = \App\Models\Metode::all();

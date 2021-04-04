@@ -21,7 +21,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
-        $profile = Metode::where('user_id',Auth::user()->id)->first();
+        $profile = Metode::where('user_id', Auth::user()->id)->first();
         return view('bank.profile.index', compact('profile'));
     }
 
@@ -78,10 +78,10 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $id_metode = Metode::where('user_id',$id)->first()->id;
+        $id_metode = Metode::where('user_id', $id)->first()->id;
         $profile = Metode::whereId($id_metode);
 
-        if($request->hasFile('gambar')){
+        if ($request->hasFile('gambar')) {
             $awal = $request->file('gambar')->getClientOriginalName();
 
             $data = [
@@ -91,8 +91,8 @@ class ProfileController extends Controller
                 'logo_bank' => $awal
             ];
 
-            $request->gambar->move(public_path().'/upload', $awal);
-            
+            $request->gambar->move(public_path() . '/upload', $awal);
+
             //update data
             $profile->update($data);
         }

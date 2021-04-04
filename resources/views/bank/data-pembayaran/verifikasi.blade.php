@@ -40,13 +40,13 @@
     <label for="exampleFormControlSelect1">STATUS</label>
     <select name="status" class="form-control" id="exampleFormControlSelect1" onchange="javascript:this.form.submit()">
       <option value="sedang diproses" @if($pembayaran->status == "sedang diproses") selected @endif>Proses</option>
-      <option value="lunas" @if($pembayaran->status == "lunas") selected @endif>Lunas</option>  
+      <option value="lunas" @if($pembayaran->status == "lunas") selected @endif>Lunas</option>
     </select>
     </form>
 
     </div>
     <div class="image">
-    <img src="{{url('upload/'.$pembayaran->bukti_transaksi)}}" class="img-thumbnail" width="250px;" height="300px;">
+    <img src="{{url('upload/'.$pembayaran->bukti_transaksi)}}" class="img-thumbnail" width="350px;" height="400px;">
     </div>
     <button type="submit" class="btn btn-primary mt-3">Verifikasi</button>
     </form>

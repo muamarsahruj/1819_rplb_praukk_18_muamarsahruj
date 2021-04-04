@@ -24,7 +24,7 @@
 
 <body>
 
-   
+
 
     <!-- Body -->
     <div class="page-content p-0" id="content">
@@ -63,7 +63,7 @@
     </script>
     <!-- End Datatables -->
 
-    
+
     <!-- My Script -->
     <script>
         const navbar = $('#navbar').innerHeight();
@@ -74,6 +74,7 @@
     </script>
     <!-- End Script -->
 
-
+    {{-- bootstrap --}}
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

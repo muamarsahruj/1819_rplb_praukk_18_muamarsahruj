@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+use App\Models\Metode;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
@@ -16,14 +20,21 @@ class PembayaranController extends Controller
     {
         $data = \App\Models\Tagihan::find($id);
         $metode = \App\Models\Metode::all();
-        return view('pelanggan.tagihan.detail-tagihan', compact('data','metode'));
+        return view('bank.tagihan.detail-tagihan', compact('data', 'metode'));
     }
-    
+
     public function bank()
     {
         $tagihan = \App\Models\Tagihan::all();
-        $data_pembayaran = \App\Models\Pembayaran::all();
-        return view('bank.data-pembayaran.index', compact('data_pembayaran', 'tagihan'));
+        if (Gate::allows('bank')) {
+            # code...
+            $bank = Metode::where('user_id', Auth::user()->id)->get()->first();
+            $data_pembayaran = Pembayaran::where('metode_id', $bank->id)->get();
+
+            return view('bank.data-pembayaran.index', compact('data_pembayaran', 'tagihan'));
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -46,7 +57,7 @@ class PembayaranController extends Controller
     {
         //
         $bukti = $request->bukti_transaksi;
-        $namaFile = $bukti->getClientOriginalName();        
+        $namaFile = $bukti->getClientOriginalName();
         $data = [
             'tagihan_id'    => $request->tagihan_id,
             'pelanggan_id'  => $request->pelanggan_id,
@@ -60,11 +71,10 @@ class PembayaranController extends Controller
             'bukti_transaksi' => $namaFile
         ];
 
-        $bukti->move(public_path().'/upload',$namaFile);
+        $bukti->move(public_path() . '/upload', $namaFile);
 
         \App\Models\Pembayaran::create($data);
         return redirect('riwayat-pembayaran');
-        
     }
 
     /**
@@ -91,7 +101,8 @@ class PembayaranController extends Controller
         return view('bank.data-pembayaran.verifikasi', compact('pembayaran'));
     }
 
-    public function oneChange(Request $request, $id){
+    public function oneChange(Request $request, $id)
+    {
         DB::select("CALL update_status_pembayaran($id, '$request->status')");
         return redirect('/pembayaran');
     }
@@ -117,5 +128,8 @@ class PembayaranController extends Controller
     public function destroy($id)
     {
         //
+        $hapuspembayaran = \App\Models\Pembayaran::find($id);
+        $hapuspembayaran->delete();
+        return redirect('/pembayaran')->with('success', 'Data berhasil dihapus');
     }
 }

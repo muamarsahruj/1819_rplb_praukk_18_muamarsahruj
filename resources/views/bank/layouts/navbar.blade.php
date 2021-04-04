@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="navbar" style="background-color: #406BE5;">
   <div class="container-fluid">
     <img src="{{asset('img/logo.png')}}" alt="" width="90">
-    <a class="navbar-brand text-white" href="dashboard"><b>E-Electricity</b></a>
+    <a class="navbar-brand text-white" href="{{ route('dashboard') }}"><b>E-Electricity</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,12 +17,15 @@
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ route('profile') }}">Profile Bank</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('log') }}">Activity Log</a>
+          </li>
       </ul>
       <ul class="navbar-nav ml-auto px-3">
 
         <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->nama_user }}   
+              {{ Auth::user()->nama_user }}
               <span class="caret"></span>
           </a>
 

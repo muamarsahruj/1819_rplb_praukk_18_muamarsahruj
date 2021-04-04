@@ -7,7 +7,7 @@
 <div class="container">
  <div class="row">
     <div class="col-lg-12">
-      <h3><span>Riwayat pembayaran</span></h3>
+      <h3><span><b>Riwayat pembayaran</b></span></h3>
       <div class="card card-body">
         {{-- <div class="mb-3">
           <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
@@ -32,7 +32,13 @@
                  <td scope="row">{{ $v_riwayat_pembayaran->tgl_pembayaran }}</td>
                  <td scope="row">Rp. {{ number_format($v_riwayat_pembayaran->total_bayar) }}</td>
                  <td scope="row">{{ $v_riwayat_pembayaran->metode->nama_metode }}</td>
-                 <td scope="row">{{ $v_riwayat_pembayaran->status }}</td>
+                 <td>
+                 @if ($v_riwayat_pembayaran->status == "sedang diproses")
+                          <span class="badge badge-primary">Sedang Diproses</span>
+                        @else
+                          <span class="badge badge-success">Lunas</span>
+                        @endif
+                 </td>
              </tr>
          @endforeach
          </tbody>

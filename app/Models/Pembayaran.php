@@ -8,7 +8,7 @@ class Pembayaran extends Model
 {
     //
     protected $table        = 'pembayaran';
-    protected $fillable     = ['tagihan_id','pelanggan_id', 'metode_id', 'tgl_pembayaran','bulan_bayar', 'tahun_bayar', 'biaya_admin', 'total_bayar', 'status','bukti_transaksi'];
+    protected $fillable     = ['tagihan_id', 'pelanggan_id', 'metode_id', 'tgl_pembayaran', 'bulan_bayar', 'tahun_bayar', 'biaya_admin', 'total_bayar', 'status', 'bukti_transaksi'];
 
     public function pelanggan()
     {
